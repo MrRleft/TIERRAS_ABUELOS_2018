@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/proj4.js"></script>
+        <script src="js/proj4leaflet.js"></script>
+        <script src="data/CASTILLALAMANCHA_0.js"></script>
+        <script src="data/PROVINCIASESPAA_1.js"></script>
+        <script src="data/PROVINCIASCASTILLALAMANCHA_2.js"></script>
+        <script src="data/MUNICIPIOSCASTILLALAMANCHA_3.js"></script>
+        <script src="data/TIERRAS_ABUELOS_4.js"></script>
+        <script>
+        var crs = new L.Proj.CRS('EPSG:3042', '+proj=utm +zone=30 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs', {
+            resolutions: [2800, 1400, 700, 350, 175, 84, 42, 21, 11.2, 5.6, 2.8, 1.4, 0.7, 0.35, 0.14, 0.07],
+        });
+        var map = L.map('map', {
+            crs: crs,
+            continuousWorld: false,
+            worldCopyJump: false, 
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[39.45482346738066,-2.917081937704938],[39.77208478256176,-2.314033415676201]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        L.control.locate().addTo(map);
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_CASTILLALAMANCHA_0(feature, layer) {
+        }
+
+        function style_CASTILLALAMANCHA_0_0() {
+            return {
+                pane: 'pane_CASTILLALAMANCHA_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,239,206,0.2980392156862745)',
+            }
+        }
+        map.createPane('pane_CASTILLALAMANCHA_0');
+        map.getPane('pane_CASTILLALAMANCHA_0').style.zIndex = 400;
+        map.getPane('pane_CASTILLALAMANCHA_0').style['mix-blend-mode'] = 'normal';
+        var layer_CASTILLALAMANCHA_0 = new L.geoJson(json_CASTILLALAMANCHA_0, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_CASTILLALAMANCHA_0',
+            onEachFeature: pop_CASTILLALAMANCHA_0,
+            style: style_CASTILLALAMANCHA_0_0,
+        });
+        bounds_group.addLayer(layer_CASTILLALAMANCHA_0);
+        map.addLayer(layer_CASTILLALAMANCHA_0);
+        function pop_PROVINCIASESPAA_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAMEUNIT'] !== null ? Autolinker.link(String(feature.properties['NAMEUNIT'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_PROVINCIASESPAA_1_0() {
+            return {
+                pane: 'pane_PROVINCIASESPAA_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,59,200,0.0)',
+            }
+        }
+        map.createPane('pane_PROVINCIASESPAA_1');
+        map.getPane('pane_PROVINCIASESPAA_1').style.zIndex = 401;
+        map.getPane('pane_PROVINCIASESPAA_1').style['mix-blend-mode'] = 'normal';
+        var layer_PROVINCIASESPAA_1 = new L.geoJson(json_PROVINCIASESPAA_1, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_PROVINCIASESPAA_1',
+            onEachFeature: pop_PROVINCIASESPAA_1,
+            style: style_PROVINCIASESPAA_1_0,
+        });
+        bounds_group.addLayer(layer_PROVINCIASESPAA_1);
+        map.addLayer(layer_PROVINCIASESPAA_1);
+        function pop_PROVINCIASCASTILLALAMANCHA_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAMEUNIT'] !== null ? Autolinker.link(String(feature.properties['NAMEUNIT'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_PROVINCIASCASTILLALAMANCHA_2_0() {
+            return {
+                pane: 'pane_PROVINCIASCASTILLALAMANCHA_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(118,37,131,0.0)',
+            }
+        }
+        map.createPane('pane_PROVINCIASCASTILLALAMANCHA_2');
+        map.getPane('pane_PROVINCIASCASTILLALAMANCHA_2').style.zIndex = 402;
+        map.getPane('pane_PROVINCIASCASTILLALAMANCHA_2').style['mix-blend-mode'] = 'normal';
+        var layer_PROVINCIASCASTILLALAMANCHA_2 = new L.geoJson(json_PROVINCIASCASTILLALAMANCHA_2, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_PROVINCIASCASTILLALAMANCHA_2',
+            onEachFeature: pop_PROVINCIASCASTILLALAMANCHA_2,
+            style: style_PROVINCIASCASTILLALAMANCHA_2_0,
+        });
+        bounds_group.addLayer(layer_PROVINCIASCASTILLALAMANCHA_2);
+        function pop_MUNICIPIOSCASTILLALAMANCHA_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAMEUNIT'] !== null ? Autolinker.link(String(feature.properties['NAMEUNIT'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIERRAS_AB'] !== null ? Autolinker.link(String(feature.properties['TIERRAS_AB'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAME_TAB'] !== null ? Autolinker.link(String(feature.properties['NAME_TAB'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_MUNICIPIOSCASTILLALAMANCHA_3_0() {
+            return {
+                pane: 'pane_MUNICIPIOSCASTILLALAMANCHA_3',
+                opacity: 1,
+                color: 'rgba(116,116,116,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(246,46,193,0.0)',
+            }
+        }
+        map.createPane('pane_MUNICIPIOSCASTILLALAMANCHA_3');
+        map.getPane('pane_MUNICIPIOSCASTILLALAMANCHA_3').style.zIndex = 403;
+        map.getPane('pane_MUNICIPIOSCASTILLALAMANCHA_3').style['mix-blend-mode'] = 'normal';
+        var layer_MUNICIPIOSCASTILLALAMANCHA_3 = new L.geoJson(json_MUNICIPIOSCASTILLALAMANCHA_3, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_MUNICIPIOSCASTILLALAMANCHA_3',
+            onEachFeature: pop_MUNICIPIOSCASTILLALAMANCHA_3,
+            style: style_MUNICIPIOSCASTILLALAMANCHA_3_0,
+        });
+        bounds_group.addLayer(layer_MUNICIPIOSCASTILLALAMANCHA_3);
+        map.addLayer(layer_MUNICIPIOSCASTILLALAMANCHA_3);
+        function pop_TIERRAS_ABUELOS_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MUNICIPIO'] !== null ? Autolinker.link(String(feature.properties['MUNICIPIO'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PROVINCIA'] !== null ? Autolinker.link(String(feature.properties['PROVINCIA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FINCA'] !== null ? Autolinker.link(String(feature.properties['FINCA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CATASTRO'] !== null ? Autolinker.link(String(feature.properties['CATASTRO'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_TIERRAS_ABUELOS_4_0() {
+            return {
+                pane: 'pane_TIERRAS_ABUELOS_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(82,152,47,0.34901960784313724)',
+            }
+        }
+        map.createPane('pane_TIERRAS_ABUELOS_4');
+        map.getPane('pane_TIERRAS_ABUELOS_4').style.zIndex = 404;
+        map.getPane('pane_TIERRAS_ABUELOS_4').style['mix-blend-mode'] = 'normal';
+        var layer_TIERRAS_ABUELOS_4 = new L.geoJson(json_TIERRAS_ABUELOS_4, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_TIERRAS_ABUELOS_4',
+            onEachFeature: pop_TIERRAS_ABUELOS_4,
+            style: style_TIERRAS_ABUELOS_4_0,
+        });
+        bounds_group.addLayer(layer_TIERRAS_ABUELOS_4);
+        map.addLayer(layer_TIERRAS_ABUELOS_4);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/TIERRAS_ABUELOS_4.png" /> TIERRAS_ABUELOS': layer_TIERRAS_ABUELOS_4,'<img src="legend/MUNICIPIOSCASTILLALAMANCHA_3.png" /> MUNICIPIOS CASTILLA LA MANCHA': layer_MUNICIPIOSCASTILLALAMANCHA_3,'<img src="legend/PROVINCIASCASTILLALAMANCHA_2.png" /> PROVINCIAS CASTILLA LA MANCHA': layer_PROVINCIASCASTILLALAMANCHA_2,'<img src="legend/PROVINCIASESPAA_1.png" /> PROVINCIAS ESPAÑA': layer_PROVINCIASESPAA_1,'<img src="legend/CASTILLALAMANCHA_0.png" /> CASTILLA LA MANCHA': layer_CASTILLALAMANCHA_0,}).addTo(map);
+        setBounds();
+        var i = 0;
+        layer_MUNICIPIOSCASTILLALAMANCHA_3.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['NAME_TAB'] !== null?String('<div style="color: #2e2e2e; font-size: 8pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['NAME_TAB']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_MUNICIPIOSCASTILLALAMANCHA_3'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_MUNICIPIOSCASTILLALAMANCHA_3]);
+        map.on("zoomend", function(){
+            resetLabels([layer_MUNICIPIOSCASTILLALAMANCHA_3]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_MUNICIPIOSCASTILLALAMANCHA_3]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_MUNICIPIOSCASTILLALAMANCHA_3]);
+        });
+        </script>
+    </body>
+</html>
